@@ -1,6 +1,5 @@
 package com.example.gmailclone.components
 
-import android.net.MailTo
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.*
@@ -13,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.gmailclone.DrawerMenuData
+import com.example.gmailclone.model.DrawerMenuData
 
 @Composable
 fun DrawerMenu(scrollState: ScrollState) {
