@@ -5,9 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
@@ -21,9 +19,11 @@ import androidx.compose.ui.unit.dp
 import com.example.gmailclone.GmailApp
 import com.example.gmailclone.R
 import com.example.gmailclone.ui.theme.GmailCloneTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @Composable
-fun HomeAppBar() {
+fun HomeAppBar(scaffoldState: ScaffoldState, scope: CoroutineScope) {
     Box(modifier = Modifier.padding(10.dp)) {
         Card(
             modifier = Modifier.requiredHeight(50.dp),
@@ -35,7 +35,14 @@ fun HomeAppBar() {
                     .fillMaxSize()
                     .padding(8.dp)
             ) {
-                Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu")
+                IconButton(onClick = {
+                    scope.launch {
+                        scaffoldState.drawerState.open()
+                    }
+                }) {
+                    Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu")
+                }
+
                 Text(text = "Search in emails", modifier = Modifier.weight(0.2f))
                 Image(
                     painter = painterResource(id = R.drawable.ic_launcher_foreground),
